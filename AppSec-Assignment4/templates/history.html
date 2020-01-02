@@ -1,0 +1,21 @@
+{% from "_formhelpers.html" import render_field %}
+<html>
+<head>
+<title>History</title>
+</head>
+<body>
+
+<p>User: {{ user.username }}</p>
+    <p id="numqueries">Count of queries: {{ numqueries }}</p>
+
+        {% for spell_query in spell_queries %}
+            <a id="query{{ spell_query.id }}" href="/history/query{{ spell_query.id }}">
+
+                query{{ spell_query.id }}
+            </a>
+            </br>
+
+        {% endfor %}
+
+</body>
+</html>

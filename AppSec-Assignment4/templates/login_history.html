@@ -1,0 +1,36 @@
+
+{% from "_formhelpers.html" import render_field %}
+<html>
+<head>
+<title>Login History</title>
+</head>
+<body>
+	<form method="POST" action="/login_history">
+	   <dl>
+	    {{ form.csrf_token }}
+	    {{ render_field(form.userid) }}
+	    <input type="submit" value="View History">
+	    </dl>
+	</form>
+
+
+	{% if user is defined %}
+
+        {% for login_event in login_events %}
+            <p id="login{{ login_event.id }}_time">Login: {{ login_event.login_timestamp }}</p>
+            
+            {% if login_event.logout_timestamp == None %}
+            	<p id="logout{{ login_event.id }}_time">Logout: N/A</p>
+            
+            {% else %}
+            	<p id="logout{{ login_event.id }}_time">Logout: {{ login_event.logout_timestamp }}</p>
+            
+            {% endif %}
+        
+        {% endfor %}
+    
+    {% endif %}
+
+    
+</body>
+</html>

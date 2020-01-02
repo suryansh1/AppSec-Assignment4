@@ -1,0 +1,14 @@
+{% from "_formhelpers.html" import render_field %}
+<html>
+<head>
+<title>History Query</title>
+</head>
+<body>
+
+<p id="queryid"> {{ spell_query.id }} </p>
+<p id="username"> {{ spell_query.author.username }} </p>
+<p id="querytext"> {{ spell_query.query_text }} </p>
+<p id="queryresults"> {{ spell_query.query_result }} </p>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% from "_formhelpers.html" import render_field %}
+<html>
+<head>
+<title>History</title>
+</head>
+<body>
+	<form method="POST" action="/history">
+	   <dl>
+	    {{ form.csrf_token }}
+	    {{ render_field(form.uname) }}
+	    <input type="submit" value="View Queries of User">
+	    </dl>
+	</form>
+
+
+{% if user is defined %}
+	<p>User: {{ user.username }}</p>
+    <p id="numqueries">Count of queries: {{ numqueries }}</p>
+
+        {% for spell_query in spell_queries %}
+            <a id="query{{ spell_query.id }}" href="/history/query{{ spell_query.id }}">
+                
+                
+                <!-- {{ spell_query.author.username }} submits: <b>{{ spell_query.query_text }}</b> <b>{{ spell_query.query_result }}</b> -->
+                
+                query{{ spell_query.id }}
+            </a>
+            </br>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+</body>
+</html>
